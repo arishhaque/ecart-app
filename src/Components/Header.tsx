@@ -1,4 +1,6 @@
-import { Container, FormControl, Navbar } from 'react-bootstrap';
+import { Badge, Dropdown, FormControl } from 'react-bootstrap';
+import { FaShoppingCart } from 'react-icons/fa';
+
 
 export function Header() {
 
@@ -7,16 +9,18 @@ export function Header() {
       <>
         <header className='header-container'>
           <h1>E-Commerce App</h1>
-          <Navbar bg="dark" expand="lg" variant="dark">
-              <Container>
-                  <Navbar.Brand href="/">
-                    <a>Shopping Cart</a>
-                  </Navbar.Brand>
-                  <Navbar.Text className = "search-bar">
-                    <FormControl style={{ width: 500 }} placeholder="Search a product" className="m-auto" />
-                  </Navbar.Text>
-              </Container>
-          </Navbar>
+          <div className="header-right">
+            <FormControl placeholder="Search a product" className="search-bar" />
+            <Dropdown align="end">
+              <Dropdown.Toggle variant="success" className="cart-btn">
+                <FaShoppingCart color="black" fontSize="25px" />
+                <Badge>{0}</Badge>
+              </Dropdown.Toggle>
+              <Dropdown.Menu style={{ minWidth: 370 }}>
+                <span style={{ padding: 10 }}>Cart is Empty!</span>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
         </header>
       </>
     );
