@@ -1,14 +1,15 @@
-import './App.css'
+import './App.css';
+import Header from './Components/Header';
+import NotFoundPage from './Pages/NotFound';
+import { Routes, Route } from "react-router-dom";
 
 function App() {
 
   return (
     <>
-      <div>
-        <h1>E-commerce Application</h1>
-      </div>
+      <Header />
     </>
   )
 }
 
-export default App
+export default App;
