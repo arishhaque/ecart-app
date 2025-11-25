@@ -3,6 +3,7 @@ import ProductCard from "../ProductCard";
 import { useState, useEffect, memo } from "react";
 import { Link } from "react-router-dom";
 import Categories from "../Categories/Categories";
+import { CartContext } from "../../Context/CartContext";
 
 
 /* fetch is used to wrap Promise and AJAX
@@ -21,15 +22,19 @@ function fetch(url, options) {
 }
 */
 
+function generateProducts(data) {
+  return data.map((prod) => ({ ...prod, quantity: 0 }));
+}
+
 function ProductList() {
   const [isLoading, setIsLoading] = useState(true);
   const [productsList, setProductsList] = useState([]);
+
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
-      .then((response) => {
-        return response.json();
-      }).then((data) => {
-        setProductsList(data);
+      .then((response) => response.json())
+      .then((data) => {
+        setProductsList(generateProducts(data));
         setIsLoading(false);
       })
   }, [])
@@ -41,9 +46,7 @@ function ProductList() {
   } else {
     return (
       <>
-        <Link to="/cart">cart</Link>
-        <Categories />
-        <div className="products">
+        <div className="products-container">
           {productsList.map(function (product) {
             return <ProductCard key={product.id} product={product} />
           })}

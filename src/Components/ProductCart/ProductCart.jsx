@@ -1,29 +1,43 @@
-import { useContext } from "react";
-import ProductCartContext from "../../Context/ProductCartContext";
+import './ProductCart.css'
+import { CartContext } from "../../Context/CartContext";
 
 function ProductCart({ product }) {
-  const { cart, increaseQuantity, decreaseQuantity } = useContext(ProductCartContext);
+  const { cart, setCart } = CartContext();
 
   function addQuantity() {
-    increaseQuantity(product);
+    console.log('add to cart1', cart)
+    let itemExist = false;
+    cart.forEach((item) => itemExist = item.id === product.id);
+    if (itemExist) {
+      setCart((prevCart) => prevCart.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : { ...item }));
+    } else {
+      setCart((prevCart) => [ ...prevCart, { ...product, quantity: 1 }]);
+    }
   }
 
   function reduceQuantity() {
-    decreaseQuantity(product);
+    let itemExistQuantity = 0;
+    cart.forEach((item) => itemExistQuantity += item.id === product.id ? item.quantity : 0);
+    if (itemExistQuantity > 1) {
+      setCart((prevCart) => prevCart.map((item) => item.id === product.id ? { ...item, quantity: item.quantity - 1 } : { ...item }));
+    }else {
+      setCart((prevCart) => [ ...prevCart, { ...product, quantity: 0 }]);
+    }
   }
 
-  let quantity = cart[product.id] ? cart[product.id].quantity : 0;
-  if (quantity > 0) {
+  let itemQuantity = 0;
+  cart.forEach((item) => itemQuantity += item.id === product.id ? item.quantity : 0);
+  if (itemQuantity > 0) {
     return (
       <div>
         <button onClick={addQuantity}>+</button>
-        <span> {quantity} </span>
+        <span> {itemQuantity} </span>
         <button onClick={reduceQuantity}>-</button>
       </div>
     )
   } else {
     return (
-      <button onClick={addQuantity}>Add to Cart</button>
+      <button className="add-cart-btn" onClick={addQuantity}>Add to Cart</button>
     )
   }
 }

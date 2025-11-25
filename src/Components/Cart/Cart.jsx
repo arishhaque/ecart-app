@@ -1,19 +1,20 @@
-import { useContext } from "react";
-import useWindowSize from "../../Hooks/useWindowSize"
-import ProductCartContext from "../../Context/ProductCartContext";
-import { useSelector } from "react-redux";
+//import useWindowSize from "../../Hooks/useWindowSize"
+import { CartContext } from "../../Context/CartContext";
+//import { useSelector } from "react-redux";
 
 function Cart() {
 
+  /*
   const cart = useSelector((state) => state.cart.items)
-  const cartList = Object.values(cart);
-  /* using useContext
-  const productCart = useContext(ProductCartContext);
-  const cartList = Object.values(productCart.cart);
+  const cart = Object.values(cart);
   */
+  // using useContext
+  const cartContext = CartContext();
+  const cart = Object.values(cartContext.cart);
+
   // const windowSize = useWindowSize();
   let totalPrice = 0;
-  if (cartList.length === 0) {
+  if (cart.length === 0) {
     return (
       <>
         <div>
@@ -26,7 +27,7 @@ function Cart() {
       <>
         <ol>
           {
-            cartList.map((item) => {
+            cart.map((item) => {
               totalPrice += item.price * item.quantity;
               return <li key={item.id}><div>{item.title}, <span>quantity - {item.quantity}, </span><span>price - {item.price}</span></div></li>
             })

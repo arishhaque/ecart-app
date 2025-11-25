@@ -6,11 +6,11 @@ import "./ProductRating.css";
 
 function ProductRating({ rating, maxRating, size = 1 }) {
   return (
-    <div className="rating">
+    <div className="product-rating">
       {new Array(maxRating).fill(0).map((_, index) => {
         const isActive = rating >= index + 1
         return (
-          < Icon key={index} className={classNames("rating__star", { "rating__star--active": isActive })} path={mdiStar} size={1} />
+          < Icon key={index} className={classNames("rating__star", { "rating__star--active": isActive })} path={mdiStar} size={size} />
         )
       })}
     </div>

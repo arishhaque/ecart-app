@@ -5,3 +5,10 @@
 .rating__star--active {
   color: goldenrod
 }
+
+.product-rating {
+  display: flex;
+  gap: 5px;
+  padding: 20px 0;
+  height: 50px;
+}
