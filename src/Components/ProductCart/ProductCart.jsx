@@ -16,9 +16,9 @@ function ProductCart({ product }) {
   }
 
   function reduceQuantity() {
-    let itemExistQuantity = 0;
-    cart.forEach((item) => itemExistQuantity += item.id === product.id ? item.quantity : 0);
-    if (itemExistQuantity > 1) {
+    let itemExistingQuantity = 0;
+    cart.forEach((item) => itemExistingQuantity += item.id === product.id ? item.quantity : 0);
+    if (itemExistingQuantity > 1) {
       setCart((prevCart) => prevCart.map((item) => item.id === product.id ? { ...item, quantity: item.quantity - 1 } : { ...item }));
     }else {
       setCart((prevCart) => [ ...prevCart, { ...product, quantity: 0 }]);
