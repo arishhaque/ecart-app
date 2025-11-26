@@ -5,9 +5,7 @@ function ProductCart({ product }) {
   const { cart, setCart } = CartContext();
 
   function addQuantity() {
-    console.log('add to cart1', cart)
-    let itemExist = false;
-    cart.forEach((item) => itemExist = item.id === product.id);
+    let itemExist = cart.some((item) => item.id === product.id);
     if (itemExist) {
       setCart((prevCart) => prevCart.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : { ...item }));
     } else {
@@ -16,12 +14,11 @@ function ProductCart({ product }) {
   }
 
   function reduceQuantity() {
-    let itemExistingQuantity = 0;
-    cart.forEach((item) => itemExistingQuantity += item.id === product.id ? item.quantity : 0);
-    if (itemExistingQuantity > 1) {
+    let currentItem = cart.find((item) => item.id === product.id);
+    if (currentItem && currentItem.quantity === 1) {
+      setCart((prevCart) => prevCart.filter((item) => item.id !== product.id));
+    }else if (currentItem) {
       setCart((prevCart) => prevCart.map((item) => item.id === product.id ? { ...item, quantity: item.quantity - 1 } : { ...item }));
-    }else {
-      setCart((prevCart) => [ ...prevCart, { ...product, quantity: 0 }]);
     }
   }
 
