@@ -1,6 +1,6 @@
 # Ecommerce App
 
-A small ecommerce storefront built with React and Vite. This project demonstrates a simple product list, product cards, and a cart using modern React patterns: hooks (`useContext`, `useState`, `useMemo`), Context for app-level state, and a lightweight store structure.
+A small ecart functionality built with React and Vite. This project demonstrates a simple product list, product cards, and a cart using modern React patterns: hooks (`useContext`, `useState`, `useMemo`), Context for app-level state, and a lightweight store structure.
 
 ## Key Features
 

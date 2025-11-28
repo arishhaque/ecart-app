@@ -53,6 +53,7 @@ function ProductList() {
   }
 }
 
+// memo wraps the ProductList component and caches its props (name) to prevent unnecessary re-renders.
 export default memo(ProductList);
 
 /* Without Fetch API
