@@ -3,7 +3,9 @@ import ProductsPage from '../Pages/Products/ProductsPage';
 function Home() {
   return (
     <>
-      <ProductsPage />
+      <div className="main-container">
+        <ProductsPage />
+      </div>
     </>
   )
 }

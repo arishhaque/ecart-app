@@ -1,9 +1,6 @@
 import "./ProductList.css"
 import ProductCard from "../ProductCard";
 import { useState, useEffect, memo } from "react";
-import { Link } from "react-router-dom";
-import Categories from "../Categories/Categories";
-import { CartContext } from "../../Context/CartContext";
 
 
 /* fetch is used to wrap Promise and AJAX

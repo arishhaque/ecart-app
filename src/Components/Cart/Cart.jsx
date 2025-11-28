@@ -1,20 +1,14 @@
 
 import { CartContext } from "../../Context/CartContext";
 import './Cart.css'
-//import useWindowSize from "../../Hooks/useWindowSize"
-//import { useSelector } from "react-redux";
+
 
 function Cart() {
-
-  /*
-  const cart = useSelector((state) => state.cart.items)
-  const cart = Object.values(cart);
-  const windowSize = useWindowSize();
-  */
 
   // using useContext
   const { cart } = CartContext();
   let totalPrice = 0;
+
   if (cart.length === 0) {
     return (
       <>

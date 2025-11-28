@@ -1,3 +1,12 @@
+// This code is not in use
+/* Context API usage
+
+const { cart, setCart } = CartContext();
+
+// Add to cart
+setCart((prevCart) => [ ...prevCart, { ...product, quantity: 1 }]);
+
+*/
 import { createContext, useContext, useState } from "react";
 
 const Cart = createContext();

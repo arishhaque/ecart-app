@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './Components/Header';
 import Home from './Components/Home';
-import Cart from './Components/Cart';
+import CartPage from './Pages/Cart/CartPage';
 import NotFoundPage from './Pages/NotFound';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
@@ -14,7 +14,7 @@ function App() {
         <div className="app-container">
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/cart' element={<Cart />} />
+            <Route path='/cart' element={<CartPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>

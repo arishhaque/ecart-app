@@ -1,4 +1,4 @@
-import ProductList from "../../Components/Cart/Cart";
+import Cart from "../../Components/Cart/Cart";
 
 function CartPage() {
   return <Cart />
