@@ -1,6 +1,6 @@
 # Ecart App
 
-A small cart application built with React and Context API. This project demonstrates a simple product list, product cards, and a cart using modern React patterns: hooks (`useContext`, `useState`, `useMemo`), Context for app-level state, and a lightweight store structure.
+An e-cart application built with React and Context API. This project demonstrates a simple product list, product cards, and a cart using modern React patterns: hooks (`useContext`, `useState`, `useMemo`), Context for app-level state, and a lightweight store structure.
 
 ## Key Features
 
